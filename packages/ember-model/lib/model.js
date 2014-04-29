@@ -428,7 +428,7 @@ Ember.Model.reopenClass({
     } else if (typeof id === 'object') {
       return this._findFetchQuery(id, false);
     } else {
-      return this._findFetchById(id, false);
+      return this._findFetchById(id, false, App.__container__);
     }
   },
 

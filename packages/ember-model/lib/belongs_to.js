@@ -8,7 +8,7 @@ function getType(record) {
     this.type = Ember.get(Ember.lookup, this.type);
 
     if (!this.type) {
-      var store = Ember.Model.Store.create({ container: record.container });
+      var store = Ember.Model.Store.create({ container: App.__container__ });
       this.type = store.modelFor(type);
       this.type.reopenClass({ adapter: store.adapterFor(type) });
     }
@@ -72,7 +72,7 @@ Ember.belongsTo = function(type, options) {
         }
       }
 
-      return value === undefined ? null : value;  
+      return value === undefined ? null : value;
     } else {
       value = this.getBelongsTo(key, type, meta);
       this._registerBelongsTo(meta);

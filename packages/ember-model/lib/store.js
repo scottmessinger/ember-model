@@ -1,5 +1,5 @@
 Ember.Model.Store = Ember.Object.extend({
-  container: null,
+  container: App.__container__,
 
   modelFor: function(type) {
     return this.container.lookupFactory('model:'+type);
@@ -50,6 +50,7 @@ Ember.onLoad('Ember.Application', function(Application) {
 
       application.inject('route', 'store', 'store:main');
       application.inject('controller', 'store', 'store:main');
+      application.inject('model', 'store', 'store:main');
     }
   });
 });

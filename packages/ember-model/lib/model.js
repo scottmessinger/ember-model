@@ -124,7 +124,7 @@ Ember.Model = Ember.Object.extend(Ember.Evented, {
       if (relationshipMeta.options.embedded) {
         relationshipType = relationshipMeta.type;
         if (typeof relationshipType === "string") {
-          relationshipType = Ember.get(Ember.lookup, relationshipType) || this.container.lookupFactory('model:'+ relationshipType);
+          relationshipType = Ember.get(Ember.lookup, relationshipType) || App.__container__.lookupFactory('model:'+ relationshipType);
         }
 
         relationshipData = data[relationshipKey];
@@ -416,7 +416,7 @@ Ember.Model.reopenClass({
     } else if (typeof id === 'object') {
       return this._findFetchQuery(id, true);
     } else {
-      return this._findFetchById(id, true);
+      return this._findFetchById(id, true, App.__container__);
     }
   },
 
